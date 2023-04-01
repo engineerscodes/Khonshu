@@ -6,7 +6,7 @@ import java.security.spec.ECGenParameterSpec;
 public class Main {
 
     public static void  main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
-       System.out.println(Security.getProvider("SunEC").getService("AlgorithmParameters", "EC").getAttribute("SupportedCurves"));
+        System.out.println(Security.getProvider("SunEC").getService("AlgorithmParameters", "EC").getAttribute("SupportedCurves"));
         KeyPairGenerator g = KeyPairGenerator.getInstance("EC","SunEC");
         ECGenParameterSpec ecsp = new ECGenParameterSpec("secp521r1");
         g.initialize(ecsp);

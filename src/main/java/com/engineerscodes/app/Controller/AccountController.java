@@ -9,16 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@RestController("/account")
-@ComponentScan({"com.engineerscodes.app.Util"})
+@RestController
 public class AccountController {
 
-    @Autowired
-    Node node;
 
     @GetMapping("/setup")
     public String AccountSetup()  {
-       return node.getIP();
+       return "NULL";
     }
 
 
