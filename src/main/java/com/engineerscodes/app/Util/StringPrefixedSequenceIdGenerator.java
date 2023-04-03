@@ -5,12 +5,13 @@ import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.Configurable;
 import org.hibernate.id.IdentifierGenerator;
-import org.hibernate.id.enhanced.SequenceStyleGenerator;
+import org.hibernate.query.Query;
 import org.hibernate.internal.util.config.ConfigurationHelper;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Properties;
 
 public class StringPrefixedSequenceIdGenerator  implements IdentifierGenerator, Configurable  {
@@ -26,7 +27,11 @@ public class StringPrefixedSequenceIdGenerator  implements IdentifierGenerator, 
     @Override
     public Serializable generate(SharedSessionContractImplementor session,
                                  Object object) throws HibernateException {
-        return valuePrefix + 1000;
+        session.createNativeQuery("CREATE  SEQUENCE  IF NOT EXISTS book_seq START WITH 1 INCREMENT BY 1").executeUpdate();
+        String statement = "select nextval('book_seq')";
+        Query query2 = session.createQuery(statement);
+        Long nextValue = (Long) query2.uniqueResult();
+        return valuePrefix + nextValue;
     }
 
     @Override

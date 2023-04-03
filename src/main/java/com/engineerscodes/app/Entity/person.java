@@ -11,16 +11,16 @@ import org.hibernate.annotations.Generated;
 
 @Entity
 @Data
-@Table(name = "person2")
+@Table(name = "person")
 public class person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="player_seq")
     @GenericGenerator(
-            name = "book_seq",
+            name = "player_seq",
             strategy = "com.engineerscodes.app.Util.StringPrefixedSequenceIdGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "kh"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "khonshu"),
                     })
     private String ID;
 
