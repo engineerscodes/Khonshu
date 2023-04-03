@@ -11,3 +11,5 @@ Simple Application to learn keycloak &amp; Spring
 
 ![image](https://user-images.githubusercontent.com/68312849/229566777-25e6bd6a-c085-4023-858f-b7442fc827a3.png)
 https://docs.jboss.org/hibernate/orm/6.0/migration-guide/migration-guide.html#id-gen-type
+
+https://thorben-janssen.com/sequence-naming-strategies-in-hibernate-6/
