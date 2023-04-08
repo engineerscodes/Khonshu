@@ -6,13 +6,16 @@ import org.keycloak.common.VerificationException;
 import org.keycloak.representations.AccessToken;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -29,8 +32,8 @@ public class Config {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET,"*/**").hasAuthority(KS_ADMIN)
-                .requestMatchers(HttpMethod.POST,"*/**").hasAnyAuthority(KS_ADMIN)
+                .requestMatchers(HttpMethod.GET,"*/**").hasAuthority(KS_USER)
+                .requestMatchers(HttpMethod.POST,"*/**").hasAuthority(KS_USER)
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
@@ -41,10 +44,19 @@ public class Config {
                 .csrf()
                 .disable()
                 .oauth2ResourceServer()
-                .jwt();
+                .jwt(
+                       jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
+                );
 
         return http.build();
     }
+
+    private Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {
+        JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
+        jwtConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRealmRoleConverter());
+        return jwtConverter;
+    }
+
 
     public String token(){
         Jwt principal = getPrincipal();

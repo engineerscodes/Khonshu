@@ -1,2 +1,24 @@
-package com.engineerscodes.app.Config;public class KeycloakRealmRoleConverter {
+package com.engineerscodes.app.Config;
+
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class KeycloakRealmRoleConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
+    @Override
+    public Collection<GrantedAuthority> convert(Jwt jwt) {
+        final Map<String, Object> realmAccess = (Map<String, Object>) jwt.getClaims().get("realm_access");
+        return ((List<String>)realmAccess.get("roles")).stream()
+                .map(roleName ->roleName)
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+
+        // if using hasRole need to prefix ROLE_{roleName}  .map(roleName -> "ROLE_" + roleName)
+        //  prefix to map to a Spring Security "role"
+        // if using hasAuthority no need
+    }
 }
