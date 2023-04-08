@@ -8,6 +8,7 @@ import org.keycloak.common.VerificationException;
 import org.keycloak.representations.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authorization.AuthorityAuthorizationManager;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,10 @@ public class AccountController {
        return "NULL";
     }
 
+    @GetMapping("/all")
+    public String accounts(){
+        return "all";
+    }
 
 
 }
