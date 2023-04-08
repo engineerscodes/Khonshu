@@ -1,6 +1,8 @@
 # Keycloak Role Based example 
+```java
   .requestMatchers(HttpMethod.GET,"*/**").hasAuthority(KS_USER)
   .requestMatchers(HttpMethod.POST,"*/**").hasAuthority(KS_USER)
+```  
 ```java
 2023-04-08T13:30:32.244+05:30 DEBUG 6148 --- [nio-9000-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /setup
 2023-04-08T13:30:32.246+05:30 TRACE 6148 --- [nio-9000-exec-1] o.s.security.web.FilterChainProxy        : Invoking DisableEncodeUrlFilter (1/13)
