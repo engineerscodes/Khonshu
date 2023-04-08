@@ -37,7 +37,7 @@ public class ConfigTest {
     @WithMockUser(username="admin",authorities = {"ks_admin"})
     public void TestUserWithRoleAdmin() throws Exception {
         this.mockMvc.perform(get("/all"))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isForbidden());
     }
 
     @Test
@@ -45,6 +45,12 @@ public class ConfigTest {
     public void TestUserWithRoleUser() throws Exception {
         this.mockMvc.perform(get("/all"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void TestWithNoAuth() throws Exception{
+        this.mockMvc.perform(get("/all"))
+                .andExpect(status().isUnauthorized());
     }
 
 }
