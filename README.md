@@ -13,3 +13,6 @@ Simple Application to learn keycloak &amp; Spring
 https://docs.jboss.org/hibernate/orm/6.0/migration-guide/migration-guide.html#id-gen-type
 
 https://thorben-janssen.com/sequence-naming-strategies-in-hibernate-6/
+
+# Spring Security Test
+https://docs.spring.io/spring-security/reference/servlet/test/method.html
