@@ -38,8 +38,8 @@ public class AccountController {
         }
 
         personRepo.save(p);
-
-       return "NULL";
+        System.out.println(personRepo.getUser(p.getName()));
+        return "NULL";
     }
 
     @GetMapping("/all")

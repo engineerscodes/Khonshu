@@ -9,9 +9,9 @@ import org.hibernate.annotations.Generated;
 
 
 
-@Entity
+@Entity(name = "emp")
 @Data
-@Table(name = "person")
+@Table(name = "person2")
 public class person {
 
     @Id
@@ -24,6 +24,7 @@ public class person {
                     })
     private String ID;
 
+    @Column(name = "user_name")
     private String name;
 
 }

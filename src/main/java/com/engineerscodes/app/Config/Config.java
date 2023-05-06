@@ -32,8 +32,8 @@ public class Config {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET,"*/**").hasAuthority(KS_USER)
-                .requestMatchers(HttpMethod.POST,"*/**").hasAuthority(KS_USER)
+                .requestMatchers(HttpMethod.GET,"*/**").hasAuthority(KS_ADMIN)
+                .requestMatchers(HttpMethod.POST,"*/**").hasAuthority(KS_ADMIN)
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
