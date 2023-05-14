@@ -16,3 +16,5 @@ https://thorben-janssen.com/sequence-naming-strategies-in-hibernate-6/
 
 # Spring Security Test
 https://docs.spring.io/spring-security/reference/servlet/test/method.html
+# Spring Security Architecture
+![image](https://github.com/engineerscodes/Khonshu/assets/68312849/a476e1f0-3c4b-4abc-ac0a-724115c3d2f6)
