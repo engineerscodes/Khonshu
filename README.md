@@ -18,3 +18,7 @@ https://thorben-janssen.com/sequence-naming-strategies-in-hibernate-6/
 https://docs.spring.io/spring-security/reference/servlet/test/method.html
 # Spring Security Architecture
 ![image](https://github.com/engineerscodes/Khonshu/assets/68312849/a476e1f0-3c4b-4abc-ac0a-724115c3d2f6)
+
+# Cors
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/cors/CorsConfiguration.html#setAllowedOriginPatterns(java.util.List)
+![image](https://github.com/engineerscodes/Khonshu/assets/68312849/16ed82e4-791e-4a9e-8b85-f8699fd0ff74)
